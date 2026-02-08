@@ -1,2 +1,21 @@
-# Autoencoder
-팀 과제: 오토인코더 기반 Animal Image Retrieval(CBIR) 구현
+# **🎯 오토인코더 기반 Animal Image Retrieval(CBIR) 구현**
+
+## **결론 및 프로젝트 분석**
+
+### 1. 프로젝트 요약
+> 본 프로젝트는 Convolutional Autoencoder(CAE)를 활용하여 동물 이미지 데이터셋에 대한 유사 이미지 검색(CBIR) 시스템을 구현하였습니다.
+
+- 모델 구조: Encoder(특징 추출)와 Decoder(이미지 복원)로 구성된 CNN 기반 오토인코더.
+
+- 핵심 원리: 이미지를 픽셀 단위로 비교하는 것이 아니라, 학습된 모델이 추출한 Latent Feature(잠재 특징) 벡터 간의 유클리드 거리(Euclidean Distance)를 계산하여 유사도를 판단함.
+
+
+### 2. 학습 결과 분석
+- Loss 변화: 학습이 진행됨에 따라 MSE Loss가 0.0039 수준으로 수렴하였으며, 이는 모델이 원본 이미지의 주요 특징을 손실 없이 잘 압축하고 있음을 의미합니다.
+
+- 검색 성능: Query 이미지(예: 호랑이)를 입력했을 때, 같은 종의 동물이나 유사한 색감/자세를 가진 이미지들이 Top-5 결과로 도출되었습니다. 이는 모델이 동물의 [형태, 색상, 배경] 등의 특징을 스스로 학습했음을 보여줍니다.
+
+### 3. 한계점 및 개선 방안 (Future Work)
+- 흐릿한 복원: MSE Loss의 특성상 복원된 이미지가 다소 흐릿(Blurry)해지는 경향이 있습니다. 이를 개선하기 위해 GAN(Generative Adversarial Networks) 기반의 학습을 고려할 수 있습니다.
+
+- 복잡한 배경: 동물이 작게 나오거나 배경이 복잡한 경우 검색 정확도가 떨어질 수 있습니다. 이를 위해 객체 탐지(Object Detection) 전처리를 추가하거나 ResNet과 같은 더 깊은 모델을 Encoder로 사용하는 전이 학습(Transfer Learning)을 적용하면 성능을 높일 수 있습니다.
