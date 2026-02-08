@@ -12,8 +12,11 @@
 
 ### 2. 학습 결과 분석
 - Loss 변화: 학습이 진행됨에 따라 MSE Loss가 0.0039 수준으로 수렴하였으며, 이는 모델이 원본 이미지의 주요 특징을 손실 없이 잘 압축하고 있음을 의미합니다.
+<img src="./AutoencoderIMG/AutoencoderLossGraph">
+
 
 - 검색 성능: Query 이미지(예: 호랑이)를 입력했을 때, 같은 종의 동물이나 유사한 색감/자세를 가진 이미지들이 Top-5 결과로 도출되었습니다. 이는 모델이 동물의 [형태, 색상, 배경] 등의 특징을 스스로 학습했음을 보여줍니다.
+<img src="./AutoencoderIMG/AutoencoderQueryImage">
 
 ### 3. 한계점 및 개선 방안 (Future Work)
 - 흐릿한 복원: MSE Loss의 특성상 복원된 이미지가 다소 흐릿(Blurry)해지는 경향이 있습니다. 이를 개선하기 위해 GAN(Generative Adversarial Networks) 기반의 학습을 고려할 수 있습니다.
